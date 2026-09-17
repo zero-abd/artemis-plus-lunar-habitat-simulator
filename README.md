@@ -69,7 +69,7 @@ node build-for-production.js
 npm start          # serves the app, API and game on $PORT (default 5000)
 ```
 
-The Unity WebGL build must be present in `backend/public/Build/` for the simulation to load. The Unity project source is in `unity_codebase/`.
+The Unity WebGL build must be present in `backend/public/Build/` for the simulation to load. It is committed, so the web app runs without opening Unity. The Unity project source is in `unity_codebase/`; to open or rebuild it, first import the packages listed under [Third-party assets](#third-party-assets-buy-or-import-separately).
 
 ### API
 
@@ -87,7 +87,7 @@ The Unity WebGL build must be present in `backend/public/Build/` for the simulat
 ## Project structure
 
 ```
-NSAC-2025/
+artemis-plus-lunar-habitat-simulator/
 ├── frontend/                 React + TypeScript app (Vite)
 │   └── src/components/       LandingPage, AboutPage, MissionPage, SystemsPage,
 │                             MethodsPage, DataDesignPage, GamePanel, ChatPanel, Navbar
@@ -95,7 +95,7 @@ NSAC-2025/
 │   ├── src/index.ts          static serving, caching, health and version endpoints
 │   ├── src/routes/chat.ts    Gemini chat routes
 │   └── public/               Unity WebGL build served at /game
-├── unity_codebase/           Unity project for the simulation
+├── unity_codebase/           Unity project for the simulation (Asset Store packages not included)
 ├── build-for-production.js   builds the frontend and copies it into backend/
 └── railway.json              Railway build and deploy config
 ```
@@ -106,6 +106,37 @@ NSAC-2025/
 
 - The Gemini key is held in server memory and shared by every visitor of one server process. It is fine for a local demo; a multi-user deployment would need per-session keys.
 - The assistant does not receive live game state from the Unity build yet (the API accepts `gameState`, but the frontend sends `null`).
+
+---
+
+## Third-party assets (buy or import separately)
+
+The Unity project in `unity_codebase/` was built with the Unity Asset Store packages below. Their licenses do not allow redistributing the package files, so they are not in this repository and are listed in `.gitignore`. Without them the web app and the committed WebGL build still work, but opening `unity_codebase/` in Unity shows missing scripts, prefabs and materials in the scenes that use them. That is expected.
+
+| Package | Folder it goes in | Cost | Source |
+|---|---|---|---|
+| PDF Renderer by Paroxe | `Assets/Paroxe/` | Paid, buy on the Unity Asset Store | Asset Store listing "PDF Renderer" (publisher Paroxe) |
+| Shift - Complete Sci-Fi UI (v2.0.10) by Michsky | `Assets/External Assets/Shift - Complete Sci-Fi UI/` | Paid, buy on the Unity Asset Store | Publisher site from the package readme: https://www.michsky.com |
+| Digger (terrain caves and overhangs), shader packages only | `Assets/Digger/Shaders/` | Paid, buy on the Unity Asset Store | Asset Store listing "Digger" |
+| MPUIKit (Modern Procedural UI Kit) by Scrollbie | `Assets/External Assets/MPUIKit/` | Edition not identifiable from the files; check the Asset Store listing | Docs linked from the package readme: https://scrollbie.com/documentations/mpuikit-docs/ |
+| Moon environment pack (terrain, lens flares, image effects) | `Assets/External Assets/Moon/` | Publisher and price not identifiable from the files | Name only |
+| Mini First Person Controller | `Assets/Mini First Person Controller/` | Free on the Unity Asset Store (license does not allow reposting) | Name only |
+| Yughues Free Sand Materials | `Assets/YughuesFreeSandMaterials/` | Free on the Unity Asset Store (license does not allow reposting) | Name only |
+
+**Import steps**
+
+1. Open `unity_codebase/` in Unity 2022.3 (the project was made with 2022.3.62f1).
+2. Sign in to your Unity account, then buy or claim each package above on the Unity Asset Store so it appears in **Window > Package Manager > My Assets**.
+3. In Package Manager, download and **Import** each package. Keep the full import list checked.
+4. Place each imported folder at the path in the table, relative to `unity_codebase/`, moving it inside Unity's Project window if it imported elsewhere (Shift, Moon and MPUIKit go under `Assets/External Assets/`). Unity links scenes to assets by the GUIDs in the packages' `.meta` files, and keeping these paths also keeps the folders covered by `.gitignore`.
+5. For Digger, import the shader `.unitypackage` that matches your render pipeline (URP or HDRP, version 12-14 or 17) from `Assets/Digger/Shaders/`.
+6. Open the scenes in `Assets/_Scenes/` (`Lunar South`, `Habitats`) and check the Console for any remaining missing references.
+
+---
+
+## License
+
+The team's own code and assets are MIT licensed; see [`LICENSE`](LICENSE). The MIT grant does not cover the Asset Store packages above, which you must obtain under their own licenses, or the third-party components that remain in the repository (Noto Color Emoji, Unity Starter Assets, TextMesh Pro), which are listed with their licenses in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 ---
 
