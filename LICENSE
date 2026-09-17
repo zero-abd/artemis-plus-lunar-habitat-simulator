@@ -20,10 +20,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
----------------------------------------------------------------------------
-
-Scope: this MIT license covers the Artemis+ team's own code and assets. It
-does not cover the third-party components that remain in this repository under
-their own licenses (listed in THIRD_PARTY_NOTICES.md), and it does not cover
-the Unity Asset Store packages that must be bought or imported separately
-(listed in README.md under "Third-party assets").
