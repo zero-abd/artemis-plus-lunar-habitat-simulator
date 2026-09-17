@@ -2,3 +2,19 @@ node_modules
 .env
 .venv
 *.zip
+# Third-party Unity Asset Store packages: import locally, never commit.
+# See "Third-party assets (buy or import separately)" in README.md.
+unity_codebase/Assets/Paroxe/
+unity_codebase/Assets/Paroxe.meta
+unity_codebase/Assets/External Assets/Shift - Complete Sci-Fi UI/
+unity_codebase/Assets/External Assets/Shift - Complete Sci-Fi UI.meta
+unity_codebase/Assets/External Assets/Moon/
+unity_codebase/Assets/External Assets/Moon.meta
+unity_codebase/Assets/External Assets/MPUIKit/
+unity_codebase/Assets/External Assets/MPUIKit.meta
+unity_codebase/Assets/Digger/
+unity_codebase/Assets/Digger.meta
+unity_codebase/Assets/Mini First Person Controller/
+unity_codebase/Assets/Mini First Person Controller.meta
+unity_codebase/Assets/YughuesFreeSandMaterials/
+unity_codebase/Assets/YughuesFreeSandMaterials.meta
