@@ -1,6 +1,6 @@
 # Third-party notices
 
-The MIT license in [`LICENSE`](LICENSE) covers the Artemis+ team's own code and assets. The components below are in this repository under their own licenses and are **not** covered by the MIT grant.
+The MIT license in [`LICENSE`](LICENSE) covers only the Artemis+ team's own code and assets. It does not cover the Asset Store packages that must be bought or imported separately, or the components below. The components below are in this repository under their own licenses and are **not** covered by the MIT grant.
 
 ## Kept in the repository
 
